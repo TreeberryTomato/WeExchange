@@ -138,6 +138,10 @@
     <Content Include="images\Top.png" />
     <Content Include="images\Xiamen.png" />
     <Content Include="ItemImage.aspx" />
+    <Content Include="LoginPage\Login.aspx" />
+    <Content Include="LoginPage\Register&amp;Login.css" />
+    <Content Include="RegisterPage\Register&amp;Login.css" />
+    <Content Include="RegisterPage\Register.aspx" />
     <Content Include="Web.config" />
     <Content Include="CategoryPage\CategoryPage.aspx" />
   </ItemGroup>
@@ -156,6 +160,13 @@
     <Compile Include="ItemImage.aspx.designer.cs">
       <DependentUpon>ItemImage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="LoginPage\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoginPage\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Base.Master.cs">
       <DependentUpon>Base.Master</DependentUpon>
@@ -170,6 +181,13 @@
     </Compile>
     <Compile Include="CategoryPage\CategoryPage.aspx.designer.cs">
       <DependentUpon>CategoryPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegisterPage\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegisterPage\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
