@@ -1,0 +1,250 @@
+
+
+.header {
+    padding: 0px 0px 0px 0px;
+}
+
+body
+{
+    min-height: 100vh;
+    background-image: url("images/background_green.jpg");
+    background-repeat: repeat-x;
+    /*background-color: rgb(255, 255, 255);*/
+}
+
+.nav {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    display: inline-block;
+    width: 100%;
+    /*background: #00997f;*/
+    background: none;
+}
+
+.nav ul li {
+    width: 238px;
+    float: left;
+    text-align: center;
+}
+
+.nav ul li img {
+    height: 45px;
+}
+
+.nav ul li:hover {
+    background: #f7efc2;
+}
+
+.nav ul a {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    line-height: 50px;
+    color: rgb(0, 0, 0);
+}
+
+.nav .drop-down {
+    position: relative;
+}
+
+.nav .content {
+    padding: 0;
+    display: none;
+    position: absolute;
+    z-index: 1;
+    background: #f7efc2;
+}
+
+.nav .content li:hover>a {
+    background-color: #c8ddb0;
+}
+
+.nav .drop-down:hover .content {
+    display: block;
+}
+
+.search {
+    width: 400px;
+    display: flex;
+}
+
+.search input {
+    float: left;
+    width: 300px;
+    height: 50px;
+    outline: none;
+    border: 0px;
+    border-radius: 0%;
+    box-sizing: border-box;
+}
+
+.search button {
+    float: right;
+    flex: 1;
+    width: 100px;
+    height: 50px;
+    /*background-color: #00997f;*/
+    background: none;
+    color: rgb(0, 0, 0);
+    border-radius: 0%;
+    border-style: none;
+    outline: none;
+    font-family: sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.search button i {
+    font-style: normal;
+}
+
+.search button:hover {
+    /*background-color: #95d1ad;*/
+    background-color: #f7efc2;
+}
+
+ul,
+li {
+    margin: auto;
+    padding: 0;
+    border: 0;
+    text-align: center;
+    list-style: none;
+}
+
+
+/*去除浏览器默认样式*/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+/*去掉超链接下划线*/
+
+a {
+    text-decoration: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+/*设置总的div*/
+
+.container {
+    position: relative;
+    width: 1000px;
+    height: 400px;
+    margin: 10px auto 0 auto;
+    margin-bottom: 50px;
+    overflow: hidden;
+}
+
+
+/*设置装图片的div*/
+
+.container .wrap {
+    position: absolute;
+    transition-duration: 2s;
+    width: 7000px;
+    height: 400px;
+    z-index: -1;
+}
+
+
+/*设置图片格式*/
+
+.container .wrap img {
+    float: left;
+    width: 1000px;
+    height: 400px;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+/*设置按钮位置*/
+
+.container .buttons {
+    position: absolute;
+    left: 42%;
+    bottom: 30px;
+    width: 250px;
+    height: 10px;
+    z-index: 2;
+}
+
+
+/*设置按钮样式*/
+
+.container .buttons span {
+    margin-left: 5%;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(4, 46, 4, 0.938);
+    cursor: pointer;
+}
+
+
+/*按钮滚动颜色*/
+
+.container .buttons span.on {
+    background-color: rgb(72, 177, 98);
+}
+
+
+/*设置左右两个箭头*/
+
+.container .arrow {
+    position: absolute;
+    top: 40%;
+    text-align: center;
+    color: rgb(223, 220, 205);
+    padding: 0px 14px;
+    border-radius: 50%;
+    font-size: 50px;
+    z-index: 2;
+    display: none;
+}
+
+
+/*左箭头*/
+
+.container .arrow_left {
+    left: 1%;
+}
+
+
+/*右箭头*/
+
+.container .arrow_right {
+    right: 1%;
+}
+
+
+/*设置箭头隐藏*/
+
+.container:hover .arrow {
+    display: block;
+}
+
+
+/*设置箭头被鼠标滑过的背景颜色*/
+
+.container .arrow:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.more_hover {
+    box-shadow: 2px 2px 5px black;
+    transition-duration: 1s;
+}
+.more_move {
+    box-shadow: none;
+}
