@@ -7,20 +7,29 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace WeExchange
+namespace WeExchange.ItemPage
 {
 
 
-    public partial class HomePage
+    public partial class ItemPage
     {
 
         /// <summary>
-        /// lunbo 控件。
+        /// wrap 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lunbo;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl wrap;
+
+        /// <summary>
+        /// description 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl description;
     }
 }
