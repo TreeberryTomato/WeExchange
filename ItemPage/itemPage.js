@@ -141,8 +141,3 @@ for (let i = 0, len = dots.length; i < len; i++) {
         }
     })(i);
 }
-
-// search button submit
-function submitSearch() {
-    document.getElementById("searchForm").submit();
-}

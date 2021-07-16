@@ -103,7 +103,7 @@ namespace WeExchange.ItemPage
                 {
                     string img_url = "/ItemImage.aspx?image_id=" + row["id"].ToString();
 
-                    item = "<img runat=\"server\" src=\"" + img_url + "\" alt=\"" + alt + "\">";
+                    item = "<img id=\"img\" runat=\"server\" src=\"" + img_url + "\" alt=\"" + alt + "\">";
 
                     wrap.InnerHtml += item;
                     alt++;
