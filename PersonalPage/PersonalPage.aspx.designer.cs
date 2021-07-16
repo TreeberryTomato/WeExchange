@@ -7,65 +7,83 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WeExchange
+namespace WeExchange.PersonalPage
 {
 
 
-    public partial class Base
+    public partial class PersonalPage
     {
 
         /// <summary>
-        /// head control.
+        /// profile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.WebControls.Image profile;
 
         /// <summary>
-        /// form1 control.
+        /// upload_button control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.FileUpload upload_button;
 
         /// <summary>
-        /// register_login control.
+        /// name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl register_login;
+        protected global::System.Web.UI.WebControls.TextBox name;
 
         /// <summary>
-        /// online_logout control.
+        /// gender control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl online_logout;
+        protected global::System.Web.UI.WebControls.DropDownList gender;
 
         /// <summary>
-        /// logoutButton control.
+        /// contact_info control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton logoutButton;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea contact_info;
 
         /// <summary>
-        /// ContentPlaceHolder1 control.
+        /// modify_button control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.WebControls.ImageButton modify_button;
+
+        /// <summary>
+        /// save control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button save;
+
+        /// <summary>
+        /// cancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button cancel;
     }
 }

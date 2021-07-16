@@ -64,46 +64,6 @@ body
     display: block;
 }
 
-.search {
-    width: 400px;
-    display: flex;
-}
-
-.search input {
-    float: left;
-    width: 300px;
-    height: 50px;
-    outline: none;
-    border: 0px;
-    border-radius: 0%;
-    box-sizing: border-box;
-}
-
-.search button {
-    float: right;
-    flex: 1;
-    width: 100px;
-    height: 50px;
-    /*background-color: #00997f;*/
-    background: none;
-    color: rgb(0, 0, 0);
-    border-radius: 0%;
-    border-style: none;
-    outline: none;
-    font-family: sans-serif;
-    font-size: 15px;
-    font-weight: bold;
-}
-
-.search button i {
-    font-style: normal;
-}
-
-.search button:hover {
-    /*background-color: #95d1ad;*/
-    background-color: #f7efc2;
-}
-
 ul,
 li {
     margin: auto;

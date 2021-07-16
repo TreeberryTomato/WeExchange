@@ -10,59 +10,59 @@
     <link rel="stylesheet" href="Base_style.css">
 </head>
 <body>
+    <form id="form1" runat="server">
     <!--Top Navigation Bar-->
     <div class="header">
-      <div class="nav">
-        <ul>
-          <li>
-            <a href="/HomePage/HomePage.aspx" style="height: 50px;">
-              <img src="/images/logo.png">
-            </a>
-          </li>
-          <li class="drop-down" style="width: 150px;"><a href="#">Category</a>
-            <ul class="content">
-              <li style="width: 150px;"><a href="/CategoryPage/CategoryPage.aspx?category_id=0">Food</a></li>
-              <li style="width: 150px;"><a href="/CategoryPage/CategoryPage.aspx?category_id=1">Electronics</a></li>
-              <li style="width: 150px;"><a href="/CategoryPage/CategoryPage.aspx?category_id=2">Clothes</a></li>
-              <li style="width: 150px;"><a href="/CategoryPage/CategoryPage.aspx?category_id=3">Makeup</a></li>
-              <li style="width: 150px;"><a href="/CategoryPage/CategoryPage.aspx?category_id=4">Stationery</a></li>
-            </ul>
-          </li>
-             </ul>
-          <div id="register&login">
+        <div class="nav">
             <ul>
-            <li style="float: right; width: 100px;">
-              <a href="../LoginPage/Login.aspx" onclick="changeArea()">
-                Login
-              </a>
-            </li>
-            <li style="float: right; width: 100px;">
-              <a href="../RegisterPage/Register.aspx">
-                Register
-              </a>
-            </li>
-                </ul>
-          </div>
+                <li>
+                    <a href="/HomePage/HomePage.aspx" style="height: 50px;">
+                        <img src="/images/logo.png">
+                    </a>
+                </li>
+                <li class="drop-down" style="width: 150px;"><a href="#">Category</a>
+                    <ul class="content">
+                        <li style="width: 150px;"><a href="/CategoryPage/CategoryPage.aspx?category_id=0">Food</a></li>
+                        <li style="width: 150px;"><a href="/CategoryPage/CategoryPage.aspx?category_id=1">Electronics</a></li>
+                        <li style="width: 150px;"><a href="/CategoryPage/CategoryPage.aspx?category_id=2">Clothes</a></li>
+                        <li style="width: 150px;"><a href="/CategoryPage/CategoryPage.aspx?category_id=3">Makeup</a></li>
+                        <li style="width: 150px;"><a href="/CategoryPage/CategoryPage.aspx?category_id=4">Stationery</a></li>
+                    </ul>
+                </li>
+            </ul>
 
-          <div id="online&logout" style="display: none;">
-              <ul>
-            <li style="float: right; width: 100px;">
-              <a href="Register&Login/logout_action.jsp">
-                Logout
-              </a>
-            </li>
-            <li style="float: right; width: 100px;">
-              <a href="PersonalPage/PersonalPage.jsp">
-                Account
-              </a>
-            </li>
-              </ul>
-          </div>
-       
-      </div>
+            
+            <div id="register_login" runat="server">
+                <ul>
+                    <li style="float: right; width: 100px;">
+                        <a href="../LoginPage/Login.aspx" onclick="changeArea()">Login
+                        </a>
+                    </li>
+                    <li style="float: right; width: 100px;">
+                        <a href="../RegisterPage/Register.aspx">Register
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="online_logout" runat="server">
+                <ul>
+                    <li style="float: right; width: 100px;">
+                        <asp:Panel runat="server">
+                            <asp:LinkButton ID="logoutButton" runat="server" OnClick="Logout">Logout</asp:LinkButton>
+                        </asp:Panel>
+                    </li>
+                    <li style="float: right; width: 100px;">
+                        <a href="/PersonalPage/PersonalPage.aspx">Account
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
     </div>
 
-    <form id="form1" runat="server">
+    
         <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
@@ -71,44 +71,51 @@
 
     <!--go to top-->
     <div style="margin-left: 95%; margin-top: 10px; margin-bottom: 20px;">
-        <button onclick="ToTop()" style="width: fit-content; display: inline-block; border:none; border-radius: 50%; background-color:#ced1ab; padding: 5px;">
+        <button onclick="ToTop()" style="width: fit-content; display: inline-block; border: none; border-radius: 50%; background-color: #ced1ab; padding: 5px;">
             <img src="/images/Top.png" width="45">
         </button>
-          <script type="text/javascript">
+        <script type="text/javascript">
             function ToTop() {
-              scrollTo(0, 0);
+                scrollTo(0, 0);
             }
-          </script>
+        </script>
     </div>
 
     <!--footer-->
-    <footer style="background-color:#c1d1ab; border-radius: 5px; padding-bottom: 20px;">
-      <div style="text-align: center; margin-bottom: 30px;">
-        <div style="padding-top: 30px;">
-          <img src="/images/Xiamen.png"
-               style="display: inline-block; border-right: 3px solid rgb(66, 88, 71); padding-right: 30px; margin-right: 30px;">
+    <footer style="background-color: #c1d1ab; border-radius: 5px; padding-bottom: 20px;">
+        <div style="text-align: center; margin-bottom: 30px;">
+            <div style="padding-top: 30px;">
+                <img src="/images/Xiamen.png"
+                    style="display: inline-block; border-right: 3px solid rgb(66, 88, 71); padding-right: 30px; margin-right: 30px;">
 
-          <div style="margin-right: 50px; display: inline-block;">
-            <p style="font-style: normal; font-size: 16px;">
-              Developed by <br> WeExchange team <br>   <br>
-            </p>
-          </div>
-          <address style="margin-right: 20px; display: inline-block;">
-            <p style="font-size: 16px; font-style: normal;">Contact information: <br>
-              <a href="mailto:DMT1809254@xmu.edu.my" style="text-decoration: none; color:cornflowerblue;">
-                DMT1809254@xmu.edu.my <br> <br>
-              </a>
-            </p>
-          </address>
+                <div style="margin-right: 50px; display: inline-block;">
+                    <p style="font-style: normal; font-size: 16px;">
+                        Developed by
+                        <br>
+                        WeExchange team
+                        <br>
+                        <br>
+                    </p>
+                </div>
+                <address style="margin-right: 20px; display: inline-block;">
+                    <p style="font-size: 16px; font-style: normal;">
+                        Contact information:
+                        <br>
+                        <a href="mailto:DMT1809254@xmu.edu.my" style="text-decoration: none; color: cornflowerblue;">DMT1809254@xmu.edu.my
+                            <br>
+                            <br>
+                        </a>
+                    </p>
+                </address>
+            </div>
         </div>
-      </div>
 
 
-      <div style="text-align: center; font-size: 14px;">
-        <p>
-          &copy;Copyright. All rights reserved.
-        </p>
-      </div>
+        <div style="text-align: center; font-size: 14px;">
+            <p>
+                &copy;Copyright. All rights reserved.
+            </p>
+        </div>
     </footer>
 </body>
 </html>

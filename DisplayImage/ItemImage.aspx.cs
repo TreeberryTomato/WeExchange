@@ -11,7 +11,7 @@ namespace WeExchange
 {
     public partial class ItemImage : System.Web.UI.Page
     {
-        public const String connstr = "server=localhost;Database=weexchange;uid=root;pwd=1234;charset=utf8";
+        public const String connstr = "server=localhost;Database=weexchange;uid=root;pwd=1234;charset=utf8;pooling=True";
         MySqlConnection conn = new MySqlConnection(connstr);
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -27,6 +27,7 @@ namespace WeExchange
             img = (Byte[])imageTable.Rows[0]["image_content"];
 
             Response.BinaryWrite(img);
+            conn.Close();
         }
     }
 }

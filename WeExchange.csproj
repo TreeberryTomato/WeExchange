@@ -123,6 +123,7 @@
     <Content Include="images\camera.jpg" />
     <Content Include="images\Clothes.jpg" />
     <Content Include="images\default_profile.png" />
+    <Content Include="images\edit.png" />
     <Content Include="images\Electronics.jpg" />
     <Content Include="images\Food.jpg" />
     <Content Include="images\green.jpg" />
@@ -137,9 +138,12 @@
     <Content Include="images\Stationery.jpg" />
     <Content Include="images\Top.png" />
     <Content Include="images\Xiamen.png" />
-    <Content Include="ItemImage.aspx" />
+    <Content Include="DisplayImage\ItemImage.aspx" />
     <Content Include="LoginPage\Login.aspx" />
     <Content Include="LoginPage\Register&amp;Login.css" />
+    <Content Include="PersonalPage\PersonalPage.aspx" />
+    <Content Include="DisplayImage\ProfileImage.aspx" />
+    <Content Include="PersonalPage\PersonalPage.css" />
     <Content Include="RegisterPage\Register&amp;Login.css" />
     <Content Include="RegisterPage\Register.aspx" />
     <Content Include="Web.config" />
@@ -153,11 +157,11 @@
     <Compile Include="HomePage\HomePage.aspx.designer.cs">
       <DependentUpon>HomePage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ItemImage.aspx.cs">
+    <Compile Include="DisplayImage\ItemImage.aspx.cs">
       <DependentUpon>ItemImage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ItemImage.aspx.designer.cs">
+    <Compile Include="DisplayImage\ItemImage.aspx.designer.cs">
       <DependentUpon>ItemImage.aspx</DependentUpon>
     </Compile>
     <Compile Include="LoginPage\Login.aspx.cs">
@@ -166,6 +170,20 @@
     </Compile>
     <Compile Include="LoginPage\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PersonalPage\PersonalPage.aspx.cs">
+      <DependentUpon>PersonalPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PersonalPage\PersonalPage.aspx.designer.cs">
+      <DependentUpon>PersonalPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DisplayImage\ProfileImage.aspx.cs">
+      <DependentUpon>ProfileImage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DisplayImage\ProfileImage.aspx.designer.cs">
+      <DependentUpon>ProfileImage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Base.Master.cs">
@@ -202,6 +220,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ItemPage\" />
+    <Folder Include="TempUpload\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

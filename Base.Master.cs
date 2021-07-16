@@ -11,10 +11,22 @@ namespace WeExchange
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["UserName"]=="")
+            if(Session["UserName"]!=null)
             {
-
+                register_login.Visible = false;
+                online_logout.Visible = true;
             }
+            else
+            {
+                register_login.Visible = true;
+                online_logout.Visible = false;
+            }
+        }
+
+        protected void Logout(object sender, EventArgs e)
+        {
+            Session["UserName"] = null;
+            Response.Redirect(Request.Url.ToString());
         }
     }
 }
