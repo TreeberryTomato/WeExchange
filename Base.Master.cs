@@ -22,7 +22,6 @@ namespace WeExchange
                 online_logout.Visible = false;
             }
         }
-
         protected void Logout(object sender, EventArgs e)
         {
             Session["UserName"] = null;

@@ -94,7 +94,7 @@ namespace WeExchange
                     string item =
                         "<div class=\"grid_item\">" +
                             "<a id=\"link\" style=\"text-decoration: none\" href=\"/ItemPage/itemPage.aspx?item_id=" + row["id"].ToString() + "\">" +
-                                "<img id=\"img\" runat=\"server\" style=\"width: 100%;\" src=" + img_url + ">" +
+                                "<img id=\"img\" runat=\"server\" style=\"width: 100%;\" src=/DisplayImage/" + img_url + ">" +
                                 "<div class=\"title\">" + row["name"].ToString() + "</div>" +
                                 "<div class=\"price\">&yen " + row["price"].ToString() + "</div>" +
                                 "<div class=\"hot\">HOT: " + row["hot"].ToString() + "</div>" +
