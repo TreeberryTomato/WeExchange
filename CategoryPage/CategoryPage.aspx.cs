@@ -35,7 +35,6 @@ namespace WeExchange
         public void AddItems(object sender, EventArgs e)
         {
             grid_table.InnerHtml = "";
-            string html = "";
             string sql = "";
             int degree_id = degree_list.SelectedIndex;
 
