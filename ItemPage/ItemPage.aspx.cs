@@ -64,7 +64,7 @@ namespace WeExchange.ItemPage
         protected void ShowItem(object sender, EventArgs e)
         {
             description.InnerHtml = "";
-            string html = "<a href=\"\"style=\"color:#3d3c3a\">"+ 
+            string html = "<a href=\"/PersonalPage/PersonalPage.aspx?user_id="+ owner_id + "\"style=\"color:#3d3c3a\">"+ 
                               "<div class=\"owner\">" +
                             //"<img src = \"DisplayProfile.jsp?user_id=<%=owner_id%>\" width=\"40px\" style=\"border-radius: 20px;\">" + 
                               "<div class=\"owner_name\">" + owner_name + "</div>" + 
@@ -101,7 +101,7 @@ namespace WeExchange.ItemPage
 
                 foreach (DataRow row in dt.Rows)
                 {
-                    string img_url = "/ItemImage.aspx?image_id=" + row["id"].ToString();
+                    string img_url = "/DisplayImage/ItemImage.aspx?image_id=" + row["id"].ToString();
 
                     item = "<img id=\"img\" runat=\"server\" src=\"" + img_url + "\" alt=\"" + alt + "\">";
 
