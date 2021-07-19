@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using MySql.Data.MySqlClient;
+using System.Configuration;
 
 namespace WeExchange.ItemPage
 {
@@ -18,6 +19,13 @@ namespace WeExchange.ItemPage
         public string post_date;
         public string hot;
         public string owner_id;
+        public string content_owner_id;
+        public string userid;
+        public string content;
+        public string comment_post_date;
+        public string content_owner;
+        public string comment_id;
+        //private bool canModify = true;
 
         public string owner_name;
 
@@ -25,8 +33,9 @@ namespace WeExchange.ItemPage
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Get item info
-            item_id = Request["item_id"];
+            
+                //Get item info
+                item_id = Request["item_id"];
             using (MySqlConnection conn = new MySqlConnection(connstr))
             {
                 MySqlCommand command = conn.CreateCommand();
@@ -59,6 +68,8 @@ namespace WeExchange.ItemPage
 
             ShowItem(sender, e);
             ShowImage(sender, e);
+            ShowComments(sender, e);
+            CommentList(sender, e);
         }
 
         protected void ShowItem(object sender, EventArgs e)
@@ -110,6 +121,164 @@ namespace WeExchange.ItemPage
                 }
                 wrap.InnerHtml += item;
             }
+        }
+
+        protected void ShowComments(object sender, EventArgs e)
+        {
+
+            if (Session["UserName"] == null)
+            {
+                Response.Redirect("../LoginPage/Login.aspx");
+
+            }
+            else
+            {
+                userid = Session["UserName"].ToString();
+                string sql = "select * from users where id='" + userid + "';";
+
+                using (MySqlConnection con = new MySqlConnection(connstr))
+                {
+                    MySqlCommand command = con.CreateCommand();
+                    command.CommandText = sql;
+                    con.Open();
+                    MySqlDataReader reader = command.ExecuteReader();
+                    DataTable dt = new DataTable();
+                    dt.Load(reader);
+                    string user_name = dt.Rows[0]["user_name"].ToString();
+                    con.Close();
+
+                }
+                profile.ImageUrl = "/DisplayImage/ProfileImage.aspx?user_id=" + userid;
+            }
+
+        }
+        protected void SubmitComments(object sender, EventArgs e)
+        {
+            ///MySql数据库连接语句
+            string connection = ConfigurationManager.ConnectionStrings["test1ConnectionString"].ConnectionString;
+            MySqlConnection conn = new MySqlConnection(connection);
+            conn.Open();
+
+            string comment = comment_input.Text;
+
+            //MySql查询语句
+            string sqlQuery = "select * from comments";
+
+            //执行查询
+            MySqlCommand cmd = new MySqlCommand(sqlQuery, conn);
+            MySqlDataAdapter data = new MySqlDataAdapter();
+            data.SelectCommand = cmd;
+
+            //将查询结果注入到dataset Ds中
+            DataSet Ds = new DataSet();
+            data.Fill(Ds, "comments");
+            DataTable myTable = Ds.Tables["comments"];
+
+            // 添加一行
+            DataRow myRow = myTable.NewRow();
+            myRow["content"] = comment;
+            myRow["post_date"] = DateTime.Now.ToString();
+            myRow["owner_id"] = Session["UserName"].ToString();
+            myRow["item_id"] = item_id;
+            myTable.Rows.Add(myRow);
+
+            // 将DataSet的修改提交至“数据库”
+            MySqlCommandBuilder mySqlCommandBuilder = new MySqlCommandBuilder(data);
+            data.Update(Ds, "comments");
+            conn.Close();
+            //Response.Redirect("ItemPage.aspx");
+            Response.Redirect(Request.Url.ToString());
+
+        }
+        protected void CommentList(object sender, EventArgs e)
+        {
+            commentList.InnerHtml = "";
+            string span = "";
+            string comment = "";
+            string footer = "";
+            string first = "";
+            string last = "";
+            string text = "";
+            int comments_count = 1;
+
+            string sql = "select content,user_name,comments.post_date as com_postdate,comments.id as comment_id,comments.owner_id as com_ownerid from comments,users,items where item_id='" + item_id + "' and users.id = comments.owner_id and items.id = comments.item_id;";
+
+            using (MySqlConnection con = new MySqlConnection(connstr))
+            {
+                MySqlCommand command = con.CreateCommand();
+                command.CommandText = sql;
+                con.Open();
+                MySqlDataReader reader = command.ExecuteReader();
+                DataTable dt = new DataTable();
+                dt.Load(reader);
+                //判断此item是否有评论
+                if (dt != null)
+                {
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        content = row["content"].ToString();
+                        comment_post_date = row["com_postdate"].ToString();
+                        content_owner = row["user_name"].ToString();
+                        content_owner_id = Session["UserName"].ToString();
+
+                        comment_id = row["comment_id"].ToString();
+
+
+                        first = "<div class=\"comment\">";
+                        Control control1 = ParseControl(first);
+                        commentList.Controls.Add(control1);
+                        //commentList.InnerHtml += first;
+                        span = "<span class=\"comment_avatar\"> <image src =\" ../ DisplayImage / ProfileImage.aspx ? user_id = " + content_owner + " onclick=\"OpenProfile(" + content_owner + ")\"/></span> ";
+                        Control control2 = ParseControl(span);
+                        commentList.Controls.Add(control2);
+
+                        comment = "<div class=\"comment_content\"><p class=\"content_name\">" + content_owner + "</p><p class=\"content_article\">" + content;
+                        Control control3 = ParseControl(comment);
+                        commentList.Controls.Add(control3);
+
+                        last = "<asp:Button runat =\"server\" ID=\"comment_debut" + comments_count + "\" class=\"delete_button\" CommandName=\"" + comment_id + "\" text=\"Delete\"/>";
+
+                        Control control4 = ParseControl(last);
+                        commentList.Controls.Add(control4);
+
+                        footer = "</p><p class=\"content_footer\"><span class=\"footer_id\">#" + comments_count + "</span><span class=\"footer_timestamp\">" + comment_post_date + "</span></p></div><div class=\"cls\"></div></div>";
+
+                        Control control5 = ParseControl(footer);
+                        commentList.Controls.Add(control5);
+
+                        text = "<input type=\"text\" style=\"display: none\" name=\"comment_id\" value=\"" + comment_id + "\"/><input type = \"text\" style = \"display: none\" name = \"owner_id\" value = \"" + content_owner_id + "\"/><input type = \"text\" style = \"display: none\" name = \"item_id\" value = \"" + item_id + "\"/>";
+                        comments_count++;
+
+
+                        Button delete = control4.Controls[0] as Button;
+                        Console.WriteLine(delete);
+                        delete.Command += new CommandEventHandler(DeletComment);
+                    }
+
+                }
+
+                con.Close();
+            }
+        }
+        protected void OpenProfile(object sender, EventArgs e, string user)
+        {
+            Response.Redirect("/PersonalPage/PersonalPage.aspx?user_id=" + user);
+        }
+        protected void DeletComment(Object sender, CommandEventArgs e)
+        {
+
+            string id = e.CommandName;
+            string sql = "delete from comments where id='" + id + "';";
+            using (MySqlConnection con = new MySqlConnection(connstr))
+            {
+                MySqlCommand command = con.CreateCommand();
+                command.CommandText = sql;
+                con.Open();
+                System.Diagnostics.Debug.WriteLine(command.CommandText);
+                command.ExecuteNonQuery();
+                con.Close();
+            }
+            Response.Redirect(Request.Url.ToString());
         }
     }
 }

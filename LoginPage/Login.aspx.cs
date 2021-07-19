@@ -51,7 +51,12 @@ namespace WeExchange
                     {
 
                         Session["UserName"] = myRow["id"];
-                        Response.Write("<script>alert('登录成功')</script>");
+
+                        Response.Write(Request.Url.ToString());
+
+                        
+                        Response.Redirect("/HomePage/HomePage.aspx"); 
+                       
 
                     }
                     else

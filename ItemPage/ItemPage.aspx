@@ -31,6 +31,21 @@
     </div>
 </div>
 
+<div class="box">
+    <div class="comment_title">Comments</div>
+    <div class="send" id="send">
+        <span id="avatar" class="comment_avatar" runat="server">
+            <asp:Image ID="profile" runat="server"/>
+        </span>
+        <asp:TextBox runat="server" class="comment_input"  id="comment_input" cols="80" rows="5" placeholder="Please consciously follow internet-related policies and regulations."/>
+        <asp:Button class="send_button" text="Send" OnClick="SubmitComments" runat="server" />    
+    </div>
+    <div class="comment_list" id="commentList" runat="server">
+        
+    </div>
+</div>
+
+
 <script src="itemPage.js"></script>
 
 </asp:Content>

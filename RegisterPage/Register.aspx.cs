@@ -59,6 +59,7 @@ namespace WeExchange.RegisterPage
             MySqlCommandBuilder mySqlCommandBuilder = new MySqlCommandBuilder(data);
             data.Update(Ds, "user");
             conn.Close();
+            Response.Redirect("/LoginPage/Login.aspx");
         }
     }
 }
