@@ -200,7 +200,7 @@ namespace WeExchange.PersonalPage
                 MySqlCommand command = conn.CreateCommand();
                 command.CommandText =
                     "DELETE from items " +
-                    "where id=" + item_id + " and owner_id=" + user_id;
+                    "where id=\"" + item_id + "\" and owner_id=\"" + user_id+"\"";
                 conn.Open();
                 System.Diagnostics.Debug.WriteLine(command.CommandText);
                 command.ExecuteNonQuery();
