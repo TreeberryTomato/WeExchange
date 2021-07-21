@@ -219,27 +219,38 @@ namespace WeExchange.ItemPage
                         content = row["content"].ToString();
                         comment_post_date = row["com_postdate"].ToString();
                         content_owner = row["user_name"].ToString();
-                        content_owner_id = Session["UserName"].ToString();
-
+                        content_owner_id = row["com_ownerid"].ToString();
                         comment_id = row["comment_id"].ToString();
 
 
                         first = "<div class=\"comment\">";
                         Control control1 = ParseControl(first);
                         commentList.Controls.Add(control1);
-                        //commentList.InnerHtml += first;
-                        span = "<span class=\"comment_avatar\"> <image src =\" ../ DisplayImage / ProfileImage.aspx ? user_id = " + content_owner + " onclick=\"OpenProfile(" + content_owner + ")\"/></span> ";
+                        
+                        span = "<span class=\"comment_avatar\"> <asp:Image runat=\"server\" CommandName=\"" + content_owner_id + "\" ImageUrl =\" /DisplayImage/ProfileImage.aspx?user_id=" + content_owner_id +"\" /></span> ";
                         Control control2 = ParseControl(span);
                         commentList.Controls.Add(control2);
+                        ImageButton open = control2.Controls[0] as ImageButton;
+                        if (open != null)
+                        {
+                            open.Command += new CommandEventHandler(OpenProfile);
+                        }
+                        
 
                         comment = "<div class=\"comment_content\"><p class=\"content_name\">" + content_owner + "</p><p class=\"content_article\">" + content;
                         Control control3 = ParseControl(comment);
                         commentList.Controls.Add(control3);
 
-                        last = "<asp:Button runat =\"server\" ID=\"comment_debut" + comments_count + "\" class=\"delete_button\" CommandName=\"" + comment_id + "\" text=\"Delete\"/>";
 
-                        Control control4 = ParseControl(last);
-                        commentList.Controls.Add(control4);
+                        if (Session["UserName"].ToString().Equals(content_owner_id))
+                        {
+                            last = "<asp:Button runat =\"server\" ID=\"comment_debut" + comments_count + "\" class=\"delete_button\" CommandName=\"" + comment_id + "\" text=\"Delete\"/>";
+                            Control control4 = ParseControl(last);
+                            commentList.Controls.Add(control4);
+                            Button delete = control4.Controls[0] as Button;
+                            Console.WriteLine(delete);
+                            delete.Command += new CommandEventHandler(DeletComment);
+                        }
 
                         footer = "</p><p class=\"content_footer\"><span class=\"footer_id\">#" + comments_count + "</span><span class=\"footer_timestamp\">" + comment_post_date + "</span></p></div><div class=\"cls\"></div></div>";
 
@@ -248,11 +259,6 @@ namespace WeExchange.ItemPage
 
                         text = "<input type=\"text\" style=\"display: none\" name=\"comment_id\" value=\"" + comment_id + "\"/><input type = \"text\" style = \"display: none\" name = \"owner_id\" value = \"" + content_owner_id + "\"/><input type = \"text\" style = \"display: none\" name = \"item_id\" value = \"" + item_id + "\"/>";
                         comments_count++;
-
-
-                        Button delete = control4.Controls[0] as Button;
-                        Console.WriteLine(delete);
-                        delete.Command += new CommandEventHandler(DeletComment);
                     }
 
                 }
@@ -260,9 +266,12 @@ namespace WeExchange.ItemPage
                 con.Close();
             }
         }
-        protected void OpenProfile(object sender, EventArgs e, string user)
+
+
+        protected void OpenProfile(object sender, CommandEventArgs e)
         {
-            Response.Redirect("/PersonalPage/PersonalPage.aspx?user_id=" + user);
+            string id = e.CommandName;
+            Response.Redirect("/PersonalPage/PersonalPage.aspx?user_id=" + id);
         }
         protected void DeletComment(Object sender, CommandEventArgs e)
         {
