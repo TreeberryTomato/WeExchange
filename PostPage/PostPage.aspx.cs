@@ -84,8 +84,8 @@ namespace WeExchange.PostPage
             }
 
             //Get owner id (已登录状态取user's id）
-            //int owner_id = int.Parse(Session["UserName"].ToString());
-            int owner_id = 2;
+            int owner_id = int.Parse(Session["UserName"].ToString());
+            //int owner_id = 2;
 
             //Update total in categories
             total = total + 1;

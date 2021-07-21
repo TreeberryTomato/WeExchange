@@ -25,7 +25,7 @@ namespace WeExchange
         protected void Logout(object sender, EventArgs e)
         {
             Session["UserName"] = null;
-            Response.Redirect(Request.Url.ToString());
+            Response.Redirect("/HomePage/HomePage.aspx");
         }
     }
 }
