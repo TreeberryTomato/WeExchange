@@ -170,6 +170,8 @@ namespace WeExchange.PostPage
 
             // 将四张图片存储进数据库
             Insert_Image(sender,e,image_ids,itemId);
+            
+            Response.Redirect("/PersonalPage/PersonalPage.aspx");
         }
 
         protected void Insert_Image(object sender, EventArgs e, int[] image_ids, string item_id)
